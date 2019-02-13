@@ -1,4 +1,4 @@
-let g:sql_caps_script_path = expand('<sfile>:p:h') . '/sql-caps.py'
+let g:sql_caps_script_path = expand('<sfile>:p:h') . '/sql_caps.py'
 if !has('python') && !has('python3')
 	echo "Error: SqlCaps requires vim compiled with +python or +python3"
 	finish
