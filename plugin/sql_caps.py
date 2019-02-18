@@ -198,12 +198,14 @@ class SqlCapper(object):
     def set_caps(self):
         for i in range(0, len(self._vim.current.buffer)):
             line = self._vim.current.buffer[i]
+            if line.strip().startswith('--'):
+                continue
             words = line.split()
             for word in words:
                 if word.isupper():
                     continue
-                wordParts = word.split('(')
-                for wordPart in wordParts:
+                word_parts = word.split('(')
+                for wordPart in word_parts:
                     for sqlWord in self._sql_words:
                         if re.match(sqlWord + "$", wordPart.upper()):
                             line = re.sub(r"\b" + re.escape(wordPart) + r"\b", sqlWord, line)

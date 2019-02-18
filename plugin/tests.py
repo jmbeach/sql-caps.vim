@@ -12,6 +12,7 @@ class TestSqlCapper(unittest.TestCase):
 "DECLARE @ShiftDate DATE = '2019-01-17';\n"
 "DECLARE @TaktTime int = 277;\n"
 "SELECT\n"
+"  -- select should not be capitalized\n"
 "	FORMATMESSAGE('%s TO %s', convert(varchar(5), spt.StartTime), convert(varchar(5), spt.EndTime)),\n"
 "	DATEDIFF(second, spte.StartTime, spte.EndTime) / @TaktTime AS [Plan],\n"
 "	sum(DATEDIFF(second, spte.StartTime, spte.EndTime) / @TaktTime) over(ORDER BY CASE WHEN spte.StartTime >= s.StartTime THEN 1 ELSE 2 END ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) AS PlanSum,\n"
